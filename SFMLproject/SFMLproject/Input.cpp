@@ -8,25 +8,37 @@ Input::~Input()
 {
 }
 
-void Input::processInput(Character &player)
+void Input::processInput(Character &player, sf::Time elapsed)
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+	{
+		player.SetIsRunning(true);
+		player.UpdateSpeed();
+	}
+
+	if (!sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+	{
+		player.SetIsRunning(false);
+		player.UpdateSpeed();
+	}
+
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		player.MoveLeft();
+		player.MoveLeft(elapsed);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		player.MoveRight();
+		player.MoveRight(elapsed);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		player.MoveUp();
+		player.MoveUp(elapsed);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		player.MoveDown();
+		player.MoveDown(elapsed);
 	}
 }

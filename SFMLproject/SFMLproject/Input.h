@@ -8,6 +8,6 @@ public:
 	Input();
 	~Input();
 
-	void processInput(Character &player);
+	void processInput(Character &player, sf::Time elapsed);
 };
 

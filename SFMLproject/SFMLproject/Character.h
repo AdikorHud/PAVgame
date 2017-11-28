@@ -6,8 +6,16 @@
 class Character
 {
 private:
+	const float baseSpeed = 130.0f;
+	const float maxSpeed = 200.0f;
+	const float runningSpeedIncremental = 0.5f;
+	float speed = baseSpeed;
+	bool isRunning = false;
+
 	sf::Texture charTileset;
 	sf::Sprite charBody;
+
+	void LoadTextures();
 
 public:
 	Character();
@@ -19,13 +27,17 @@ public:
 
 	void SetStartingRotation(float rotation);
 
-	void MoveLeft();
+	void SetIsRunning(bool value);
 
-	void MoveRight();
+	void UpdateSpeed();
 
-	void MoveUp();
+	void MoveLeft(sf::Time elapsed);
 
-	void MoveDown();
+	void MoveRight(sf::Time elapsed);
+
+	void MoveUp(sf::Time elapsed);
+
+	void MoveDown(sf::Time elapsed);
 
 
 };

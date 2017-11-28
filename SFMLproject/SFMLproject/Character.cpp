@@ -1,8 +1,18 @@
 #include "Character.h"
 
 
+void Character::LoadTextures()
+{
+	if (!charTileset.loadFromFile("Assets/Spritesheet/sheet_characters.png"))
+	{
+		std::cout << "ERROR! Missing character texture. Class: Character." << std::endl;
+	}
+}
+
+
 Character::Character()
 {
+	Character::LoadTextures();
 }
 
 
@@ -12,13 +22,8 @@ Character::~Character()
 
 sf::Sprite Character::Draw()
 {
-	if (!charTileset.loadFromFile("Assets/Spritesheet/sheet_characters.png"))
-	{
-		std::cout << "ERROR! Missing character texture. Class: Character." << std::endl;
-	}
-
 	charBody.setTexture(charTileset);
-	charBody.setTextureRect(sf::IntRect(147, 93, 21, 31));
+	charBody.setTextureRect(sf::IntRect(0, 0, 21, 31));
 	return sf::Sprite(charBody);
 }
 
@@ -32,22 +37,48 @@ void Character::SetStartingRotation(float rotation)
 	charBody.setRotation(rotation);
 }
 
-void Character::MoveLeft()
+void Character::SetIsRunning(bool value)
 {
-	charBody.move(-1, 0);
+	if (value == true)
+	{
+		isRunning = true;
+	}
+
+	else
+	{
+		isRunning = false;
+	}
 }
 
-void Character::MoveRight()
+void Character::UpdateSpeed()
 {
-	charBody.move(1, 0);
+	if (isRunning && speed < maxSpeed)
+	{
+		speed += runningSpeedIncremental;
+	}
+
+	if (!isRunning && speed > baseSpeed)
+	{
+		speed -= runningSpeedIncremental;
+	}
 }
 
-void Character::MoveUp()
+void Character::MoveLeft(sf::Time elapsed)
 {
-	charBody.move(0, -1);
+	charBody.move(-speed * elapsed.asSeconds(),0);
 }
 
-void Character::MoveDown()
+void Character::MoveRight(sf::Time elapsed)
 {
-	charBody.move(0, 1);
+	charBody.move(speed * elapsed.asSeconds(), 0);
+}
+
+void Character::MoveUp(sf::Time elapsed)
+{
+	charBody.move(0, -speed * elapsed.asSeconds());
+}
+
+void Character::MoveDown(sf::Time elapsed)
+{
+	charBody.move(0, speed * elapsed.asSeconds());
 }
