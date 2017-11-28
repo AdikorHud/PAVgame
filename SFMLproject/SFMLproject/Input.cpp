@@ -1,16 +1,14 @@
 #include "Input.h"
 
-
 Input::Input()
 {
 }
-
 
 Input::~Input()
 {
 }
 
-void Input::processInput(Character player)
+void Input::processInput(Character &player)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
