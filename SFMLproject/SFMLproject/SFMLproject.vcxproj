@@ -133,11 +133,15 @@ copy $(SolutionDir)libs\Visual-Leak-Detector\bin\Win32 $(TargetDir)</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Character.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Input.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
