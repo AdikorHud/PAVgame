@@ -20,8 +20,8 @@ void Game::Execute()
 	sf::RenderWindow window(sf::VideoMode(600, 800), "Sport Game");
 
 	sf::Clock clock;
-
 	Input gameInput;
+	Court court;
 	
 	Character player1;
 	player1.SetStartingPosition(300, 50);
@@ -31,7 +31,7 @@ void Game::Execute()
 	player2.SetStartingPosition(300, 750);
 	player2.SetStartingRotation(-90);
 
-	Court court;
+
 	
 
 	/*
@@ -61,10 +61,9 @@ void Game::Execute()
 		window.clear();
 
 		sf::Time elapsed = clock.restart();
-		//std::cout << elapsed.asMicroseconds()  << std::endl;
 		
 		gameInput.processInput(player2, elapsed);
-		//player2.MoveRight(); //TEST for Player movement
+
 		window.draw(court.DrawTerrain());
 		window.draw(court.DrawLines());
 

@@ -11,6 +11,7 @@ private:
 	const float runningSpeedIncremental = 0.5f;
 	float speed = baseSpeed;
 	bool isRunning = false;
+	
 
 	sf::Texture charTileset;
 	sf::Sprite charBody;
