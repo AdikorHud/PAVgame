@@ -41,4 +41,9 @@ void Input::processInput(Character &player, sf::Time elapsed)
 	{
 		player.MoveDown(elapsed);
 	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		player.HitDrive();
+	}
 }

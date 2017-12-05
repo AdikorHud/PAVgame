@@ -76,10 +76,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)libs\Visual-Leak-Detector\include;$(SolutionDir)libs\SFML-2.4.2\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libs\STP-master\include;$(SolutionDir)libs\Visual-Leak-Detector\include;$(SolutionDir)libs\SFML-2.4.2\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)libs\Visual-Leak-Detector\lib\Win32;$(SolutionDir)libs\SFML-2.4.2\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\STP-master\include;$(SolutionDir)libs\Visual-Leak-Detector\lib\Win32;$(SolutionDir)libs\SFML-2.4.2\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;vld.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -139,6 +139,8 @@ copy $(SolutionDir)libs\Visual-Leak-Detector\bin\Win32 $(TargetDir)</Command>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -146,6 +148,8 @@ copy $(SolutionDir)libs\Visual-Leak-Detector\bin\Win32 $(TargetDir)</Command>
     <ClInclude Include="Court.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Physics.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

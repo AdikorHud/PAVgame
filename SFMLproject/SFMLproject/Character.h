@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+#include <SFML\System\Vector2.hpp>
 #include <iostream>
 
 
@@ -12,11 +13,17 @@ private:
 	float speed = baseSpeed;
 	bool isRunning = false;
 	
-
+	
 	sf::Texture charTileset;
-	sf::Sprite charBody;
+	sf::Sprite body;
+	sf::Sprite leftArm;
+	sf::Sprite rightArm;
+	sf::Sprite leftLeg;
+	sf::Sprite rightLeg;
+
 
 	void LoadTextures();
+
 
 public:
 	Character();
@@ -25,6 +32,8 @@ public:
 	sf::Sprite Draw();
 
 	void SetStartingPosition(float posX, float posY);
+
+	sf::Vector2<float> GetPlayerPosition();
 
 	void SetStartingRotation(float rotation);
 
@@ -40,6 +49,7 @@ public:
 
 	void MoveDown(sf::Time elapsed);
 
+	void HitDrive();
 
 };
 

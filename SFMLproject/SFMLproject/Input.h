@@ -2,6 +2,7 @@
 #include <SFML\Window\Keyboard.hpp>
 #include "Character.h"
 
+
 class Input
 {
 public:

@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 
+
 class Court
 {
 private:
@@ -9,7 +10,11 @@ private:
 	sf::Sprite courtSurface;
 	sf::Sprite courtLines;
 
+
+
 	void LoadCourtTextures();
+
+
 
 
 public:
