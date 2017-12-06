@@ -7,7 +7,7 @@
 
 #include <SFML\Graphics.hpp>
 #include <iostream>
-#include <STP\TMXLoader.hpp>
+//#include <STP\TMXLoader.hpp>
 
 
 

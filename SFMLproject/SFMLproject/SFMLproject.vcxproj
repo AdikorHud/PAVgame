@@ -89,8 +89,7 @@ copy $(SolutionDir)libs\SFML-2.4.2\bin\sfml-system-d-2.dll $(TargetDir)
 copy $(SolutionDir)libs\SFML-2.4.2\bin\sfml-window-d-2.dll $(TargetDir)
 copy $(SolutionDir)libs\SFML-2.4.2\bin\openal32.dll $(TargetDir)
 copy $(SolutionDir)libs\Visual-Leak-Detector\bin\Win32 $(TargetDir)
-copy $(SolutionDir)Assets\Tilesheet $(TargetDir)
-copy $(SolutionDir)Assets\Spritesheet $(TargetDir)</Command>
+xcopy "$(SolutionDir)Assets" "$(TargetDir)Assets" /E /Y /I /D</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -118,7 +117,8 @@ copy $(SolutionDir)Assets\Spritesheet $(TargetDir)</Command>
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)libs\SFML-2.4.2\bin\openal32.dll $(TargetDir)</Command>
+      <Command>copy $(SolutionDir)libs\SFML-2.4.2\bin\openal32.dll $(TargetDir)
+xcopy "$(SolutionDir)Assets" "$(TargetDir)Assets" /E /Y /I /D</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
