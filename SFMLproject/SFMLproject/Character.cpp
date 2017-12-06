@@ -10,7 +10,7 @@ void Character::LoadTextures()
 }
 
 
-Character::Character()
+Character::Character(bool isAIControlled)
 {
 	Character::LoadTextures();
 }
@@ -113,5 +113,5 @@ void Character::MoveDown(sf::Time elapsed)
 }
 
 void Character::HitDrive()
-{
+{	
 }

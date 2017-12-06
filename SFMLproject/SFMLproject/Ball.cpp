@@ -10,9 +10,21 @@ void Ball::LoadTextures()
 	}
 }
 
+void Ball::UpdatePosition()
+{
+	sf::Vector2f ballVector2 = yellowBall.getPosition();
+	yellowBall.setPosition(ballVector2.x + ballVelocity.x, ballVector2.y + ballVelocity.y);
+}
+
+void Ball::UpdateScale()
+{
+	yellowBall.setScale(1 + ballVelocity.z, 1 + ballVelocity.z);
+}
+
 Ball::Ball()
 	:
-	ballVelocity()
+	ballVelocity(0, 1.0, 0),
+	isMovingBottom(true)
 {
 	LoadTextures();
 }
@@ -27,8 +39,8 @@ sf::Sprite Ball::Draw()
 	yellowBall.setTexture(ball);
 	yellowBall.setTextureRect(sf::IntRect(50, 155, 12, 12));
 
-	sf::Vector2f ballVector2 = yellowBall.getPosition();	
-	yellowBall.setPosition(ballVector2.x + ballVelocity.x, ballVector2.y + ballVelocity.y);
+	UpdatePosition();
+	//UpdateScale();
 
 	return sf::Sprite(yellowBall);
 }
@@ -46,5 +58,16 @@ void Ball::UpdateVelocity(sf::Vector3<float> velocity)
 void Ball::SetService(Character player)
 {
 	sf::Vector2<float> playerPos = player.GetPlayerPosition();
-	yellowBall.setPosition(playerPos);
+	yellowBall.setPosition(playerPos.x - 10, playerPos.y + 50); // TEMP HACK
 }
+
+bool Ball::GetBallDirection()
+{
+	return isMovingBottom;
+}
+
+void Ball::SetDirection(bool value)
+{
+	isMovingBottom = value;
+}
+

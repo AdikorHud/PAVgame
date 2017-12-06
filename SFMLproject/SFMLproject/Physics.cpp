@@ -11,18 +11,27 @@ Physics::~Physics()
 }
 
 
-void Physics::UpdateBallVelocity(Ball &ball)
+void Physics::UpdateBallVelocity(Ball &ball, sf::Time elapsed)
 {
 	sf::Vector3<float> ballVelocity = ball.GetBallVelocity();	
+	
+	ballVelocity.x = ballVelocity.x;
+	ballVelocity.y = ballVelocity.y - airResistance;
 
-	ballVelocity.x += 0.0f;
-	ballVelocity.y += 0.0001;
-	ballVelocity.z -= gravity;
+	if (ballVelocity.z < terminalVelocity)
+	{
+		ballVelocity.z = ballVelocity.z + gravity;
+	}
+
+	else
+	{
+		ballVelocity.z = terminalVelocity;
+	}
 	
 	ball.UpdateVelocity(ballVelocity);
 }
 
-void Physics::CheckCollision(Character player, Ball &ball)
+void Physics::CheckCollision(Character player, Ball &ball, sf::Time elapsed)
 {
 	sf::Sprite playerSprite = player.Draw();
 	sf::FloatRect playerBox = playerSprite.getGlobalBounds();
@@ -35,9 +44,23 @@ void Physics::CheckCollision(Character player, Ball &ball)
 	{
 		sf::Vector3<float> ballVelocity = ball.GetBallVelocity();
 
-		ballVelocity.x += 0.0f;
-		ballVelocity.y = ballVelocity.y - (ballVelocity.y * 2);
-		ballVelocity.z -= gravity;
+		float hitPower = 1.0; //TEMP. Will be replaced by hitPower from player and IA input.
+
+		ballVelocity.x = ballVelocity.x;
+		
+		if (ball.GetBallDirection())
+		{
+			ballVelocity.y = hitPower * (-1);
+			ball.SetDirection(false);
+		}
+
+		else if (!ball.GetBallDirection())
+		{
+			ballVelocity.y = hitPower;
+			ball.SetDirection(true);
+		}
+
+		ballVelocity.z = 1.0;
 
 		ball.UpdateVelocity(ballVelocity);
 	}

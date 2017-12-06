@@ -31,12 +31,12 @@ void Game::Execute()
 	Input gameInput;
 	Court court;
 	
-	Character player1;
+	Character player1(true);
 	player1.SetStartingPosition(320, 68);
 	player1.SetStartingRotation(90);
 
-	Character player2;
-	player2.SetStartingPosition(320, 700);
+	Character player2(false);
+	player2.SetStartingPosition(300, 700);
 	player2.SetStartingRotation(-90);
 
 	Ball ball;
@@ -44,21 +44,6 @@ void Game::Execute()
 
 	Physics gamePhysics;
 	
-
-	/*
-	sf::SoundBuffer myBuffer;
-	sf::Sound mySound;
-
-	if (!myBuffer.loadFromFile("Assets/Audio/click3.wav"))
-	{
-	std::cout << "Error! No encontre un audio";
-	//return -1;
-	}
-
-	mySound.setBuffer(myBuffer);
-	mySound.play();
-	*/
-
 
 	while (window.isOpen())
 	{
@@ -75,8 +60,9 @@ void Game::Execute()
 		
 		gameInput.processInput(player2, elapsed);
 
-		gamePhysics.UpdateBallVelocity(ball);
-		gamePhysics.CheckCollision(player2, ball);
+		gamePhysics.UpdateBallVelocity(ball, elapsed);
+		gamePhysics.CheckCollision(player1, ball, elapsed);
+		gamePhysics.CheckCollision(player2, ball, elapsed);
 
 		window.draw(court.DrawTerrain());
 		window.draw(court.DrawLines());

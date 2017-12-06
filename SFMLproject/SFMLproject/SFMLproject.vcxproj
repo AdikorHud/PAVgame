@@ -88,7 +88,9 @@ copy $(SolutionDir)libs\SFML-2.4.2\bin\sfml-audio-d-2.dll $(TargetDir)
 copy $(SolutionDir)libs\SFML-2.4.2\bin\sfml-system-d-2.dll $(TargetDir)
 copy $(SolutionDir)libs\SFML-2.4.2\bin\sfml-window-d-2.dll $(TargetDir)
 copy $(SolutionDir)libs\SFML-2.4.2\bin\openal32.dll $(TargetDir)
-copy $(SolutionDir)libs\Visual-Leak-Detector\bin\Win32 $(TargetDir)</Command>
+copy $(SolutionDir)libs\Visual-Leak-Detector\bin\Win32 $(TargetDir)
+copy $(SolutionDir)Assets\Tilesheet $(TargetDir)
+copy $(SolutionDir)Assets\Spritesheet $(TargetDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -133,6 +135,8 @@ copy $(SolutionDir)libs\Visual-Leak-Detector\bin\Win32 $(TargetDir)</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AI.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Court.cpp" />
@@ -143,6 +147,8 @@ copy $(SolutionDir)libs\Visual-Leak-Detector\bin\Win32 $(TargetDir)</Command>
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AI.h" />
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Court.h" />

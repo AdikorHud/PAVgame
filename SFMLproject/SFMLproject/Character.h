@@ -12,6 +12,7 @@ private:
 	const float runningSpeedIncremental = 0.5f;
 	float speed = baseSpeed;
 	bool isRunning = false;
+	bool isAIControlled = false;
 	
 	
 	sf::Texture charTileset;
@@ -26,7 +27,7 @@ private:
 
 
 public:
-	Character();
+	Character(bool isAIControlled);
 	~Character();
 
 	sf::Sprite Draw();

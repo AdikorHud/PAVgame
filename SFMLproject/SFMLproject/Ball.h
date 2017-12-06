@@ -9,8 +9,13 @@ private:
 	sf::Vector3<float> ballVelocity;
 	sf::Texture ball;
 	sf::Sprite yellowBall;
+	bool isMovingBottom;
 
 	void LoadTextures();
+
+	void UpdatePosition();
+
+	void UpdateScale();
 
 
 public:
@@ -19,10 +24,14 @@ public:
 
 	sf::Sprite Draw();
 
-	sf::Vector3<float> GetBallVelocity();
+	sf::Vector3<float> GetBallVelocity();	
 
 	void UpdateVelocity(sf::Vector3<float> velocity);
 
 	void SetService(Character player);
+
+	bool GetBallDirection();
+
+	void SetDirection(bool value);
 
 };
