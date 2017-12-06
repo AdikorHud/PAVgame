@@ -1,56 +1,59 @@
 #include "Court.h"
 #include <iostream>
+using namespace std;
 
-
-
-void Court::LoadCourtTextures()
+namespace tennis_game
 {
-	if (!surface.loadFromFile("Assets/Tilesheet/groundGravel.png"))
+
+	void Court::LoadCourtTextures()
 	{
-		std::cout << "ERROR! Couldn't load Court texture. Class: Court." << std::endl;
+		if (!surface.loadFromFile("Assets/Tilesheet/groundGravel.png"))
+		{
+			std::cout << "ERROR! Couldn't load Court texture. Class: Court." << std::endl;
+		}
+
+		if (!objects.loadFromFile("Assets/Tilesheet/elements.png"))
+		{
+			std::cout << "ERROR! Couldn't load Elements texture. Class: Court." << std::endl;
+		}
 	}
 
-	if (!objects.loadFromFile("Assets/Tilesheet/elements.png"))
+	Court::Court()
 	{
-		std::cout << "ERROR! Couldn't load Elements texture. Class: Court." << std::endl;
+		Court::LoadCourtTextures();
 	}
-}
-
-Court::Court()
-{
-	Court::LoadCourtTextures();
-}
 
 
-Court::~Court()
-{
-}
+	Court::~Court()
+	{
+	}
 
 
 
-sf::Sprite Court::DrawTerrain()
-{
-	courtSurface.setTexture(surface);
-	courtSurface.setTextureRect(sf::IntRect(0, 0, 32, 32));
-	courtSurface.setPosition(0.0f, 0.0f);
-	courtSurface.setScale(20, 25);
+	sf::Sprite Court::DrawTerrain()
+	{
+		courtSurface.setTexture(surface);
+		courtSurface.setTextureRect(sf::IntRect(0, 0, 32, 32));
+		courtSurface.setPosition(0.0f, 0.0f);
+		courtSurface.setScale(20, 25);
 
 
-	return sf::Sprite(courtSurface);
-}
+		return sf::Sprite(courtSurface);
+	}
 
-sf::Sprite Court::DrawLines()
-{
-	courtLines.setTexture(surface);
-	courtLines.setTextureRect(sf::IntRect(670, 5, 70, 115));
-	courtLines.setPosition(0.0f, 0.0f);
-	courtLines.setScale(7.5, 6.5);
-	
+	sf::Sprite Court::DrawLines()
+	{
+		courtLines.setTexture(surface);
+		courtLines.setTextureRect(sf::IntRect(670, 5, 70, 115));
+		courtLines.setPosition(0.0f, 0.0f);
+		courtLines.setScale(7.5, 6.5);
 
-	return sf::Sprite(courtLines);
-}
 
-sf::Sprite Court::DrawNet()
-{
-	return sf::Sprite();
+		return sf::Sprite(courtLines);
+	}
+
+	sf::Sprite Court::DrawNet()
+	{
+		return sf::Sprite();
+	}
 }

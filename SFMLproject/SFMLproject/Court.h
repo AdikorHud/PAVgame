@@ -1,31 +1,33 @@
 #pragma once
 #include <SFML\Graphics.hpp>
+using namespace std;
 
-
-class Court
+namespace tennis_game
 {
-private:
-	sf::Texture surface;
-	sf::Texture objects;
-	sf::Sprite courtSurface;
-	sf::Sprite courtLines;
+	class Court
+	{
+	private:
+		sf::Texture surface;
+		sf::Texture objects;
+		sf::Sprite courtSurface;
+		sf::Sprite courtLines;
 
 
 
-	void LoadCourtTextures();
+		void LoadCourtTextures();
 
 
 
 
-public:
-	Court();
-	~Court();
+	public:
+		Court();
+		~Court();
 
-	sf::Sprite DrawTerrain();
+		sf::Sprite DrawTerrain();
 
-	sf::Sprite DrawLines();
+		sf::Sprite DrawLines();
 
-	sf::Sprite DrawNet();
+		sf::Sprite DrawNet();
 
-};
-
+	};
+}

@@ -1,10 +1,14 @@
 #pragma once
-class Game
+using namespace std;
+
+namespace tennis_game
 {
-public:
-	Game();
-	~Game();
+	class Game
+	{
+	public:
+		Game();
+		~Game();
 
-	void Execute();
-};
-
+		void Execute();
+	};
+}

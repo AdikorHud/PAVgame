@@ -1,14 +1,16 @@
 #pragma once
 #include <SFML\Window\Keyboard.hpp>
 #include "Character.h"
+using namespace std;
 
-
-class Input
+namespace tennis_game
 {
-public:
-	Input();
-	~Input();
+	class Input
+	{
+	public:
+		Input();
+		~Input();
 
-	void processInput(Character &player, sf::Time elapsed);
-};
-
+		void processInput(Character &player, sf::Time elapsed);
+	};
+}

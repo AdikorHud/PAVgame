@@ -1,25 +1,27 @@
 #include "AudioManager.h"
+using namespace std;
 
-
-
-AudioManager::AudioManager()
+namespace tennis_game
 {
-	/*
-	sf::SoundBuffer myBuffer;
-	sf::Sound mySound;
-
-	if (!myBuffer.loadFromFile("Assets/Audio/click3.wav"))
+	AudioManager::AudioManager()
 	{
-	std::cout << "Error! No encontre un audio";
-	//return -1;
+		/*
+		sf::SoundBuffer myBuffer;
+		sf::Sound mySound;
+
+		if (!myBuffer.loadFromFile("Assets/Audio/click3.wav"))
+		{
+		std::cout << "Error! No encontre un audio";
+		//return -1;
+		}
+
+		mySound.setBuffer(myBuffer);
+		mySound.play();
+		*/
 	}
 
-	mySound.setBuffer(myBuffer);
-	mySound.play();
-	*/
-}
 
-
-AudioManager::~AudioManager()
-{
+	AudioManager::~AudioManager()
+	{
+	}
 }

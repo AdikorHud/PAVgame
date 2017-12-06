@@ -1,8 +1,14 @@
 #pragma once
-class AI
+using namespace std;
+
+namespace tennis_game
 {
-public:
-	AI();
-	~AI();
-};
+	class AI
+	{
+	public:
+		AI();
+		~AI();
+	};
+}
+
 
