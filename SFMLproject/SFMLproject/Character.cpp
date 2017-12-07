@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "Physics.h"
 using namespace std;
 
 namespace tennis_game
@@ -117,6 +118,6 @@ namespace tennis_game
 
 	void Character::HitDrive()
 	{
-
+		Physics::CheckCollision(this);
 	}
 }
