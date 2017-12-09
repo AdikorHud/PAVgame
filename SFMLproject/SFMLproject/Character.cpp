@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "Physics.h"
+#include "TextureManager.h"
 using namespace std;
 
 namespace tennis_game
@@ -41,7 +42,7 @@ namespace tennis_game
 	<SubTexture name="characterRed (9).png" x="84" y="0" width="21" height="31"/>
 	*/
 
-	sf::Sprite Character::Draw()
+	sf::Sprite Character::GetSprite()
 	{
 		body.setTexture(charTileset);
 		body.setTextureRect(sf::IntRect(147, 93, 21, 31));
@@ -118,6 +119,6 @@ namespace tennis_game
 
 	void Character::HitDrive()
 	{
-		Physics::CheckCollision(this);
+		//Physics::CheckCollision(this);
 	}
 }

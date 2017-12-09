@@ -4,10 +4,12 @@
 #include "Court.h"
 #include "Ball.h"
 #include "Physics.h"
+#include "AI.h"
 
 #include <SFML\Graphics.hpp>
 #include <iostream>
 //#include <STP\TMXLoader.hpp>
+#include <tmxlite\Tileset.hpp>
 using namespace std;
 
 namespace tennis_game
@@ -24,6 +26,7 @@ namespace tennis_game
 	void Game::Execute()
 	{
 		sf::RenderWindow window(sf::VideoMode(640, 768), "Sport Game");
+
 
 		//tmx::TileMap map("C:/Users/Playstation/Desktop/CourtSurface.tmx");
 		//map.ShowObjects();
@@ -59,6 +62,7 @@ namespace tennis_game
 
 			sf::Time elapsed = clock.restart();
 
+
 			gameInput.processInput(player2, elapsed);
 
 			gamePhysics.UpdateBallVelocity(ball, elapsed);
@@ -68,10 +72,12 @@ namespace tennis_game
 			window.draw(court.DrawTerrain());
 			window.draw(court.DrawLines());
 
-			window.draw(player1.Draw());
-			window.draw(player2.Draw());
+			AI::ProcessAI(player1, ball, elapsed);
 
-			window.draw(ball.Draw());
+			window.draw(player1.GetSprite());
+			window.draw(player2.GetSprite());
+
+			window.draw(ball.GetSprite());
 
 			window.display();
 

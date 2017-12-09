@@ -32,7 +32,7 @@ namespace tennis_game
 		Character(bool isAIControlled);
 		~Character();
 
-		sf::Sprite Draw();
+		sf::Sprite GetSprite();
 
 		void SetStartingPosition(float posX, float posY);
 

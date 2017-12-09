@@ -22,14 +22,30 @@ namespace tennis_game
 		}
 	}
 
+
 	TextureManager::TextureManager()
 	{
 		LoadTextures();
 
 	}
 
-
 	TextureManager::~TextureManager()
 	{
+	}
+
+	sf::Texture TextureManager::GetCharacterTexture()
+	{
+		//return charTileset;
+		return sf::Texture();
+	}
+
+	sf::Texture TextureManager::GetSurfaceTexture()
+	{
+		return sf::Texture();
+	}
+
+	sf::Texture TextureManager::GetBallTexture()
+	{
+		return sf::Texture();
 	}
 }
