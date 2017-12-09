@@ -25,5 +25,10 @@ namespace tennis_game
 		~TextureManager();
 
 		void LoadTextures();
+
+		static sf::Texture GetCharacterTexture();
+		sf::Texture GetSurfaceTexture();
+		sf::Texture GetBallTexture();
+
 	};
 }

@@ -10,30 +10,35 @@ namespace tennis_game
 	{
 	private:
 		sf::Vector3<float> ballVelocity;
+		sf::Vector2f ballPosition;
 		sf::Texture ball;
 		sf::Sprite yellowBall;
 		bool isMovingBottom;
 
 		void LoadTextures();
 
-		void UpdatePosition();
+		void UpdatePosition(sf::Time elapsed);
 
-		void UpdateScale();
+		sf::Vector2f SetBallPosition();
+
+		void SetScale();
 
 
 	public:
 		Ball();
 		~Ball();
 
-		sf::Sprite Draw();
+		sf::Sprite GetSprite();
 
 		sf::Vector3<float> GetBallVelocity();
 
-		void UpdateVelocity(sf::Vector3<float> velocity);
+		void UpdateVelocity(sf::Vector3<float> velocity, sf::Time elapsed);
 
 		void SetService(Character player);
 
 		bool GetBallDirection();
+
+		sf::Vector2f GetBallPosition();		
 
 		void SetDirection(bool value);
 
