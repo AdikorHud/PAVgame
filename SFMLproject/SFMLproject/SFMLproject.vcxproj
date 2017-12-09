@@ -76,11 +76,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)libs\STP-master\include;$(SolutionDir)libs\Visual-Leak-Detector\include;$(SolutionDir)libs\tmxlite-master\tmxlite\include;$(SolutionDir)libs\SFML-2.4.2\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libs\STP-master\include;$(SolutionDir)libs\Visual-Leak-Detector\include;$(SolutionDir)libs\$(SolutionDir)libs\libtmxlite-1.0.1-vs140-x86\include;$(SolutionDir)libs\SFML-2.4.2\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)libs\tmxlite-master\tmxlite\bin\DebugStatic;$(SolutionDir)libs\Visual-Leak-Detector\lib\Win32;$(SolutionDir)libs\SFML-2.4.2\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;vld.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;libtmxlite-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\libtmxlite-1.0.1-vs140-x86\bin\DebugShared;$(SolutionDir)libs\Visual-Leak-Detector\lib\Win32;$(SolutionDir)libs\SFML-2.4.2\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;vld.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;libtmxlite-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)libs\SFML-2.4.2\bin\sfml-graphics-d-2.dll $(TargetDir)

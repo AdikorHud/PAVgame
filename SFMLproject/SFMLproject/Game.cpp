@@ -9,7 +9,7 @@
 #include <SFML\Graphics.hpp>
 #include <iostream>
 //#include <STP\TMXLoader.hpp>
-#include <tmxlite\Tileset.hpp>
+//#include <tmxlite\Tileset.hpp>
 using namespace std;
 
 namespace tennis_game
