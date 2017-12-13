@@ -2,6 +2,8 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\System\Vector2.hpp>
 #include <iostream>
+#include "Raquet.h"
+
 using namespace std;
 
 namespace tennis_game
@@ -15,6 +17,8 @@ namespace tennis_game
 		float speed = baseSpeed;
 		bool isRunning = false;
 		bool isAIControlled = false;
+
+		Raquet raquet;
 
 
 		sf::Texture charTileset;
@@ -33,6 +37,8 @@ namespace tennis_game
 		~Character();
 
 		sf::Sprite GetSprite();
+
+		sf::Sprite GetRaquetSprite();
 
 		void SetStartingPosition(float posX, float posY);
 

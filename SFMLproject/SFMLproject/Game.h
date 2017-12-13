@@ -10,5 +10,7 @@ namespace tennis_game
 		~Game();
 
 		void Execute();
+
+		void Update();
 	};
 }

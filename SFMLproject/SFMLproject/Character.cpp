@@ -1,6 +1,6 @@
 #include "Character.h"
 #include "Physics.h"
-#include "TextureManager.h"
+
 using namespace std;
 
 namespace tennis_game
@@ -18,6 +18,7 @@ namespace tennis_game
 	Character::Character(bool isAIControlled)
 	{
 		Character::LoadTextures();
+		raquet.SetPosition(body.getOrigin());
 	}
 
 
@@ -25,35 +26,19 @@ namespace tennis_game
 	{
 	}
 
-	/*
-	<SubTexture name="characterRed (1).png" x="147" y="93" width="21" height="31"/>
-	<SubTexture name="characterRed (10).png" x="168" y="31" width="21" height="31"/>
-	<SubTexture name="characterRed (11).png" x="57" y="186" width="19" height="13"/>
-	<SubTexture name="characterRed (12).png" x="38" y="186" width="19" height="13"/>
-	<SubTexture name="characterRed (13).png" x="0" y="186" width="19" height="13"/>
-	<SubTexture name="characterRed (14).png" x="19" y="186" width="19" height="13"/>
-	<SubTexture name="characterRed (2).png" x="147" y="155" width="21" height="31"/>
-	<SubTexture name="characterRed (3).png" x="126" y="31" width="21" height="31"/>
-	<SubTexture name="characterRed (4).png" x="168" y="0" width="21" height="31"/>
-	<SubTexture name="characterRed (5).png" x="147" y="62" width="21" height="31"/>
-	<SubTexture name="characterRed (6).png" x="147" y="31" width="21" height="31"/>
-	<SubTexture name="characterRed (7).png" x="147" y="0" width="21" height="31"/>
-	<SubTexture name="characterRed (8).png" x="63" y="155" width="21" height="31"/>
-	<SubTexture name="characterRed (9).png" x="84" y="0" width="21" height="31"/>
-	*/
 
 	sf::Sprite Character::GetSprite()
 	{
 		body.setTexture(charTileset);
 		body.setTextureRect(sf::IntRect(147, 93, 21, 31));
+		body.setOrigin(10.5, 31);
 
-		leftArm.setTexture(charTileset);
-		leftArm.setTextureRect(sf::IntRect(57, 186, 19, 13));
+		return body;
+	}
 
-		rightArm.setTexture(charTileset);
-
-
-		return sf::Sprite(body);
+	sf::Sprite Character::GetRaquetSprite()
+	{
+		return raquet.GetSprite();
 	}
 
 	void Character::SetStartingPosition(float posX, float posY)
@@ -100,11 +85,13 @@ namespace tennis_game
 	void Character::MoveLeft(sf::Time elapsed)
 	{
 		body.move(-speed * elapsed.asSeconds(), 0);
+		raquet.SetPosition(body.getOrigin());
 	}
 
 	void Character::MoveRight(sf::Time elapsed)
 	{
 		body.move(speed * elapsed.asSeconds(), 0);
+		raquet.SetPosition(body.getOrigin());
 	}
 
 	void Character::MoveUp(sf::Time elapsed)

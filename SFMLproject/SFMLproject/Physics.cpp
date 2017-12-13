@@ -4,6 +4,11 @@ using namespace std;
 namespace tennis_game
 {
 	Physics::Physics()
+		:
+		gravity(9.8),
+		terminalVelocity(50.0),
+		bounceFactor(0.6), //Should be defined by the Court type.
+		airResistanceFactor(-0.3)
 	{
 	}
 
@@ -12,59 +17,48 @@ namespace tennis_game
 	{
 	}
 
-
-	void Physics::UpdateBallVelocity(Ball &ball, sf::Time elapsed)
+	void Physics::UpdateBallGravity(Ball &ball, sf::Time elapsed)
 	{
 		sf::Vector3<float> ballVelocity = ball.GetBallVelocity();
 
-		ballVelocity.x = ballVelocity.x;
-		ballVelocity.y = ballVelocity.y; // -airResistance;
-
 		if (ballVelocity.z < terminalVelocity)
 		{
-			ballVelocity.z = ballVelocity.z + gravity;
+			ballVelocity.z += ballVelocity.z;
 		}
 
 		else
 		{
 			ballVelocity.z = terminalVelocity;
 		}
+	}
+
+
+
+	void Physics::SetBallVelocity(Ball &ball, sf::Time elapsed)
+	{
+		float hitPower = 250.0; //TEMP. Will be replaced by hitPower from player and IA input.
+		
+		sf::Vector3<float> ballVelocity = ball.GetBallVelocity();
+		
+		ballVelocity.x = hitPower * 0.25; //TEMP HACK. Should be replaced by a factor derived from the raquet angle.
+		ballVelocity.y = hitPower;
+		ballVelocity.z = hitPower * 0.25; //TEMP HACK. Should be replaced by a factor derived from the shot type (Lob, Drop shot, Drive, etc).
 
 		ball.UpdateVelocity(ballVelocity, elapsed);
 	}
 
-	void Physics::CheckCollision(Character player, Ball &ball, sf::Time elapsed)
+
+	//Check collision between and Sprite and the &Ball.
+	//Returns a boolean.
+	bool Physics::CheckCollision(sf::Sprite raquetSprite, Ball &ball, sf::Time elapsed)
 	{
-		
-		sf::Sprite playerSprite = player.GetSprite();
+
 		sf::Sprite ballSprite = ball.GetSprite();
-		
 
-		if (playerSprite.getGlobalBounds().intersects(ballSprite.getGlobalBounds()))
+		if (raquetSprite.getGlobalBounds().intersects(ballSprite.getGlobalBounds()))
 		{
-			sf::Vector3<float> ballVelocity = ball.GetBallVelocity();
-
-			float hitPower = 1; //TEMP. Will be replaced by hitPower from player and IA input.
-
-			ballVelocity.x = ballVelocity.x;
-
-			if (ball.GetBallDirection())
-			{
-				ballVelocity.y = hitPower * (-1);
-				ballVelocity.x = 0.005;
-				ball.SetDirection(false);
-			}
-
-			else if (!ball.GetBallDirection())
-			{
-				ballVelocity.y = hitPower;
-				ballVelocity.x = 0.005;
-				ball.SetDirection(true);
-			}
-
-			ballVelocity.z = 1.0;
-
-			ball.UpdateVelocity(ballVelocity, elapsed);
+			return true;
 		}
+		return false;
 	}
 }

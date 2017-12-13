@@ -1,3 +1,4 @@
+/*
 #pragma once
 #include <SFML\Graphics.hpp>
 using namespace std;
@@ -6,29 +7,36 @@ namespace tennis_game
 {
 	class TextureManager
 	{
+		
 	private:
+
+		TextureManager();
+		
+		static TextureManager* instance = NULL;
+
 		//Court textures
 		sf::Texture surface;
 		sf::Texture elements;
 
 		//Character textures
-		sf::Texture charTileset;
+		sf::Texture character;
 
 		//Ball Textures
 		sf::Texture objects;
 
-
-
-
-	public:
-		TextureManager();
-		~TextureManager();
-
 		void LoadTextures();
 
-		static sf::Texture GetCharacterTexture();
-		sf::Texture GetSurfaceTexture();
-		sf::Texture GetBallTexture();
+		
+	public:
+						
+		~TextureManager();
+
+		static TextureManager* GetInstance();
+
+		sf::Texture* GetCharacterTexture();
+		sf::Texture* GetSurfaceTexture();
+		sf::Texture* GetBallTexture();
 
 	};
 }
+*/

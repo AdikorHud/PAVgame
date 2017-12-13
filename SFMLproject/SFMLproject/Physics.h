@@ -8,18 +8,20 @@ namespace tennis_game
 	class Physics
 	{
 	private:
-		const float gravity = 9.8;
-		const float terminalVelocity = 50.0;
-		const float bounceFactor = 0.6; //Should be defined by the Court type.
-		const float airResistance = 0.05;
+		const float gravity;
+		const float terminalVelocity;
+		const float bounceFactor; //Should be defined by the Court type.
+		const float airResistanceFactor;
 
 
 	public:
 		Physics();
 		~Physics();
 
-		void UpdateBallVelocity(Ball &ball, sf::Time elapsed);
+		void UpdateBallGravity(Ball &ball, sf::Time elapsed);
 
-		static void CheckCollision(Character player, Ball &ball, sf::Time elapsed);
+		void SetBallVelocity(Ball &ball, sf::Time elapsed);
+
+		bool CheckCollision(sf::Sprite raquetSprite, Ball &ball, sf::Time elapsed);
 	};
 }

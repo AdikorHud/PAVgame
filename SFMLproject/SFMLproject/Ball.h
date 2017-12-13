@@ -38,6 +38,8 @@ namespace tennis_game
 
 		bool GetBallDirection();
 
+		void ChangeBallDirection();
+
 		sf::Vector2f GetBallPosition();		
 
 		void SetDirection(bool value);

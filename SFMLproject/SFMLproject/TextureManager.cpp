@@ -1,12 +1,27 @@
+/*
+
 #include "TextureManager.h"
 #include <iostream>
 using namespace std;
 
 namespace tennis_game
 {
+
+	TextureManager::TextureManager()
+		:
+		surface(),
+		elements(),
+		character(),
+		objects()
+	{
+		LoadTextures();
+
+	}
+
+
 	void TextureManager::LoadTextures()
 	{
-		if (!charTileset.loadFromFile("Assets/Spritesheet/sheet_characters.png"))
+		if (!character.loadFromFile("Assets/Spritesheet/sheet_characters.png"))
 		{
 			std::cout << "ERROR! Missing character texture. Class: Character." << std::endl;
 		}
@@ -23,29 +38,34 @@ namespace tennis_game
 	}
 
 
-	TextureManager::TextureManager()
-	{
-		LoadTextures();
-
-	}
-
 	TextureManager::~TextureManager()
 	{
 	}
 
-	sf::Texture TextureManager::GetCharacterTexture()
+
+	TextureManager* TextureManager::GetInstance()
 	{
-		//return charTileset;
-		return sf::Texture();
+		if (instance == NULL)
+		{
+			instance = new TextureManager;
+		}
+		return instance;
 	}
 
-	sf::Texture TextureManager::GetSurfaceTexture()
+	sf::Texture* TextureManager::GetCharacterTexture()
 	{
-		return sf::Texture();
+		return &sf::Texture();
 	}
 
-	sf::Texture TextureManager::GetBallTexture()
+	sf::Texture* TextureManager::GetSurfaceTexture()
 	{
-		return sf::Texture();
+		return &sf::Texture();
+	}
+
+	sf::Texture* TextureManager::GetBallTexture()
+	{
+		return &sf::Texture();
 	}
 }
+
+*/

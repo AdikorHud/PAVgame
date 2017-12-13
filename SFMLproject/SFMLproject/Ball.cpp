@@ -13,9 +13,19 @@ namespace tennis_game
 	}
 
 	void Ball::UpdatePosition(sf::Time elapsed)
-	{		
-		ballPosition.x = ballPosition.x + ballVelocity.x;
-		ballPosition.y = ballPosition.y + ballVelocity.y;
+	{
+		if (GetBallDirection())
+		{
+			ballPosition.x = ballPosition.x + ballVelocity.x * elapsed.asSeconds();
+			ballPosition.y = ballPosition.y + ballVelocity.y * elapsed.asSeconds();
+		}
+
+		else
+		{
+			ballPosition.x = ballPosition.x + (ballVelocity.x * elapsed.asSeconds()) * -1;
+			ballPosition.y = ballPosition.y + (ballVelocity.y * elapsed.asSeconds()) * -1;
+		}
+
 	}
 
 	sf::Vector2f Ball::SetBallPosition()
@@ -32,7 +42,7 @@ namespace tennis_game
 	//PUBLIC
 	Ball::Ball()
 		:
-		ballVelocity(0, 1, 0),
+		ballVelocity(0, 250, 0),
 		ballPosition(),
 		isMovingBottom(true)
 	{
@@ -51,7 +61,7 @@ namespace tennis_game
 		yellowBall.setPosition(ballPosition);
 		//SetScale();
 
-		return sf::Sprite(yellowBall);
+		return yellowBall;
 	}
 
 	sf::Vector3<float> Ball::GetBallVelocity()
@@ -74,6 +84,19 @@ namespace tennis_game
 	bool Ball::GetBallDirection()
 	{
 		return isMovingBottom;
+	}
+
+	void Ball::ChangeBallDirection()
+	{
+		if (!GetBallDirection())
+		{
+			isMovingBottom = true;
+		}
+
+		else
+		{
+			isMovingBottom = false;
+		}
 	}
 
 	sf::Vector2f Ball::GetBallPosition()
