@@ -1,4 +1,3 @@
-/*
 #pragma once
 #include <SFML\Graphics.hpp>
 using namespace std;
@@ -12,7 +11,7 @@ namespace tennis_game
 
 		TextureManager();
 		
-		static TextureManager* instance = NULL;
+		static TextureManager* instance;
 
 		//Court textures
 		sf::Texture surface;
@@ -39,4 +38,3 @@ namespace tennis_game
 
 	};
 }
-*/

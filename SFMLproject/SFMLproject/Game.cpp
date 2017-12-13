@@ -30,13 +30,13 @@ namespace tennis_game
 		sf::RenderWindow window(sf::VideoMode(640, 768), "Sport Game");		
 		window.setFramerateLimit(60);
 
-		/*
+		
 		tmx::Map court_tmx;
 		if (!court_tmx.load("Assets/TiledFiles/CourtSurface.tmx"))
 		{
 			std::cout << "ERROR!" << std::endl;
 		}
-		*/
+		
 
 		sf::Clock clock;
 		Input gameInput;

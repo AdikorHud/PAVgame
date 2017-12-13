@@ -18,7 +18,7 @@ namespace tennis_game
 	Character::Character(bool isAIControlled)
 	{
 		Character::LoadTextures();
-		raquet.SetPosition(body.getOrigin());
+		raquet.SetPosition(body.getPosition());
 	}
 
 
@@ -38,6 +38,7 @@ namespace tennis_game
 
 	sf::Sprite Character::GetRaquetSprite()
 	{
+		raquet.UpdatePosition(GetPlayerPosition());
 		return raquet.GetSprite();
 	}
 
@@ -52,7 +53,7 @@ namespace tennis_game
 	}
 
 	void Character::SetStartingRotation(float rotation)
-	{
+	{		
 		body.setRotation(rotation);
 	}
 

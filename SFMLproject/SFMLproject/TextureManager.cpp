@@ -1,11 +1,10 @@
-/*
-
 #include "TextureManager.h"
 #include <iostream>
 using namespace std;
 
 namespace tennis_game
 {
+	TextureManager* TextureManager::instance = NULL;
 
 	TextureManager::TextureManager()
 		:
@@ -67,5 +66,3 @@ namespace tennis_game
 		return &sf::Texture();
 	}
 }
-
-*/
