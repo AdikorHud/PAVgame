@@ -19,6 +19,7 @@ namespace tennis_game
 	{
 		Character::LoadTextures();
 		raquet.SetPosition(body.getPosition());
+		raquet.SetRotation(45.0);
 	}
 
 
@@ -31,7 +32,7 @@ namespace tennis_game
 	{
 		body.setTexture(charTileset);
 		body.setTextureRect(sf::IntRect(147, 93, 21, 31));
-		body.setOrigin(10.5, 31);
+		body.setOrigin(15, 31);
 
 		return body;
 	}
@@ -86,13 +87,11 @@ namespace tennis_game
 	void Character::MoveLeft(sf::Time elapsed)
 	{
 		body.move(-speed * elapsed.asSeconds(), 0);
-		raquet.SetPosition(body.getOrigin());
 	}
 
 	void Character::MoveRight(sf::Time elapsed)
 	{
 		body.move(speed * elapsed.asSeconds(), 0);
-		raquet.SetPosition(body.getOrigin());
 	}
 
 	void Character::MoveUp(sf::Time elapsed)
@@ -105,8 +104,8 @@ namespace tennis_game
 		body.move(0, speed * elapsed.asSeconds());
 	}
 
-	void Character::HitDrive()
+	void Character::ShotGroundStroke()
 	{
-		//Physics::CheckCollision(this);
+		raquet.PlayAnimation();
 	}
 }

@@ -9,6 +9,7 @@ private:
 	sf::Vector2f raquetPosition;
 	sf::Texture raquet;
 	sf::Sprite metalRaquet;
+	bool isPlayingAnimation;
 
 	void LoadTextures();
 
@@ -25,6 +26,12 @@ public:
 	void SetScale(float scale);
 
 	void SetRotation(float rotation);
+
+	void Rotate(float value);
+
+	void SetAnimationStatus(bool value);
+
+	void PlayAnimation();
 
 };
 

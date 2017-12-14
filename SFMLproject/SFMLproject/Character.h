@@ -58,7 +58,13 @@ namespace tennis_game
 
 		void MoveDown(sf::Time elapsed);
 
-		void HitDrive();
+		void ShotGroundStroke();
+
+		//void ShotSlice();
+
+		//void ShotLob();
+
+		//void ShotDropshot();
 
 	};
 }

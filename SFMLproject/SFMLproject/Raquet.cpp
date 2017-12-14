@@ -13,7 +13,8 @@ Raquet::Raquet()
 	:
 	raquetPosition(),
 	raquet(),
-	metalRaquet(raquet)
+	metalRaquet(raquet),
+	isPlayingAnimation(false)
 {
 	LoadTextures();
 }
@@ -51,3 +52,23 @@ void Raquet::SetRotation(float rotation)
 {
 	metalRaquet.setRotation(rotation);
 }
+
+void Raquet::Rotate(float value)
+{
+	metalRaquet.rotate(value);
+}
+
+void Raquet::SetAnimationStatus(bool value)
+{
+	isPlayingAnimation = value;
+}
+
+void Raquet::PlayAnimation()
+{
+	if (metalRaquet.getRotation() > -45)
+	{
+		metalRaquet.rotate(-0.5);
+	}
+}
+
+

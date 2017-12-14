@@ -36,8 +36,9 @@ namespace tennis_game
 		{
 			std::cout << "ERROR!" << std::endl;
 		}
-		
 
+			
+		
 		sf::Clock clock;
 		Input gameInput;
 		Court court;
@@ -96,12 +97,21 @@ namespace tennis_game
 
 
 			//DEBUG
+			sf::Sprite courtTest;
+
+			for (int i = 0; i < court_tmx.getTileCount().x; i++)
+			{
+				for (int j = 0; j < court_tmx.getTileCount().y; j++)
+				{
+										
+					window.draw(courtTest);
+				}
+			}
 			//window.draw();
-			window.draw(court.DrawTerrain());
-			window.draw(court.DrawLines());
+			//window.draw(court.DrawTerrain());
+			//window.draw(court.DrawLines());
 
 			
-
 			
 
 			window.draw(player1.GetSprite());
@@ -120,6 +130,8 @@ namespace tennis_game
 
 	void Game::Update()
 	{
+
+
 
 	}
 }
