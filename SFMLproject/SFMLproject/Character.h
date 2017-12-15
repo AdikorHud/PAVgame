@@ -18,6 +18,13 @@ namespace tennis_game
 		bool isRunning = false;
 		bool isAIControlled = false;
 
+		float drivePower;
+		float lobPower;
+		float slicePower;
+		float dropShotPower;
+
+		sf::Vector3f shotPower;
+
 		Raquet raquet;
 
 
@@ -50,6 +57,8 @@ namespace tennis_game
 
 		void UpdateSpeed();
 
+
+		//INPUT
 		void MoveLeft(sf::Time elapsed);
 
 		void MoveRight(sf::Time elapsed);
@@ -58,13 +67,18 @@ namespace tennis_game
 
 		void MoveDown(sf::Time elapsed);
 
-		void ShotGroundStroke();
+		void ShotDrive();
 
-		//void ShotSlice();
+		void ShotSlice();
 
-		//void ShotLob();
+		void ShotLob();
 
-		//void ShotDropshot();
+		void ShotDropshot();
+
+		//SHOTS
+		void SetShotPower(sf::Vector3f value);
+
+		sf::Vector3f GetShotPower();
 
 	};
 }

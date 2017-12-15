@@ -1,6 +1,7 @@
 #pragma once
 #include "Ball.h"
 #include "Character.h"
+
 using namespace std;
 
 namespace tennis_game
@@ -20,8 +21,10 @@ namespace tennis_game
 
 		void UpdateBallGravity(Ball &ball, sf::Time elapsed);
 
-		void SetBallVelocity(Ball &ball, sf::Time elapsed);
+		void SetBallVelocity(Ball &ball, sf::Vector3f vector, sf::Time elapsed);
 
-		bool CheckCollision(sf::Sprite raquetSprite, Ball &ball, sf::Time elapsed);
+		void UpdateBallVelocity(Ball & ball, sf::Time elapsed);
+
+		bool CheckCollision(sf::Sprite raquetSprite, Ball &ball);
 	};
 }

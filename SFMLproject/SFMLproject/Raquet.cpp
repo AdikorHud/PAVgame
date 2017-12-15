@@ -29,7 +29,7 @@ sf::Sprite Raquet::GetSprite()
 	metalRaquet.setTexture(raquet);
 	metalRaquet.setTextureRect(sf::IntRect(0, 108, 29, 8));
 	metalRaquet.setScale(1, 1);
-
+	
 	return metalRaquet;
 }
 
@@ -58,16 +58,25 @@ void Raquet::Rotate(float value)
 	metalRaquet.rotate(value);
 }
 
-void Raquet::SetAnimationStatus(bool value)
+void Raquet::SetAnimationStatus()
 {
-	isPlayingAnimation = value;
+	if (!isPlayingAnimation)
+	{
+		isPlayingAnimation = true;
+	}
 }
 
 void Raquet::PlayAnimation()
-{
-	if (metalRaquet.getRotation() > -45)
+{	
+	if (metalRaquet.getRotation() < 45 && isPlayingAnimation || metalRaquet.getRotation() > 315 && isPlayingAnimation)
 	{
-		metalRaquet.rotate(-0.5);
+		metalRaquet.rotate(-2.0);
+	}
+
+	else if (metalRaquet.getRotation() >= 315 || metalRaquet.getRotation() != 0.0)
+	{
+		metalRaquet.rotate(2.0);
+		isPlayingAnimation = false;
 	}
 }
 

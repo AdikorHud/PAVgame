@@ -45,9 +45,25 @@ namespace tennis_game
 			player.MoveDown(elapsed);
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
-			player.ShotGroundStroke();
+			player.ShotDrive();
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			player.ShotSlice();
+		}
+
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		{
+			player.ShotLob();
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		{
+			player.ShotDropshot();
 		}
 	}
 }

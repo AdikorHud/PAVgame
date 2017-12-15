@@ -87,18 +87,24 @@ namespace tennis_game
 			//player1Raquet.UpdatePosition(player1.GetPlayerPosition());
 			//player2Raquet.UpdatePosition(player2.GetPlayerPosition());
 
-			if (gamePhysics.CheckCollision(player1.GetRaquetSprite(), ball, elapsed) || gamePhysics.CheckCollision(player2.GetRaquetSprite(), ball, elapsed))
+			if (gamePhysics.CheckCollision(player1.GetRaquetSprite(), ball))
 			{
 				ball.ChangeBallDirection();
-				gamePhysics.SetBallVelocity(ball, elapsed);
+				gamePhysics.SetBallVelocity(ball, player2.GetShotPower(), elapsed);
 			}
 
-			ball.UpdateVelocity(ball.GetBallVelocity(), elapsed);
+			if (gamePhysics.CheckCollision(player2.GetRaquetSprite(), ball))
+			{
+				ball.ChangeBallDirection();
+				gamePhysics.SetBallVelocity(ball, player2.GetShotPower(), elapsed);
+			}
+
+			gamePhysics.UpdateBallVelocity(ball, elapsed);
 
 
 			//DEBUG
 			sf::Sprite courtTest;
-
+			/*
 			for (int i = 0; i < court_tmx.getTileCount().x; i++)
 			{
 				for (int j = 0; j < court_tmx.getTileCount().y; j++)
@@ -107,11 +113,11 @@ namespace tennis_game
 					window.draw(courtTest);
 				}
 			}
+
+			*/
 			//window.draw();
 			//window.draw(court.DrawTerrain());
 			//window.draw(court.DrawLines());
-
-			
 			
 
 			window.draw(player1.GetSprite());
@@ -119,6 +125,7 @@ namespace tennis_game
 
 			window.draw(player1.GetRaquetSprite());
 			window.draw(player2.GetRaquetSprite());
+
 
 			window.draw(ball.GetSprite());
 

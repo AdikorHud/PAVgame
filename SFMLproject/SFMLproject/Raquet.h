@@ -29,7 +29,7 @@ public:
 
 	void Rotate(float value);
 
-	void SetAnimationStatus(bool value);
+	void SetAnimationStatus();
 
 	void PlayAnimation();
 

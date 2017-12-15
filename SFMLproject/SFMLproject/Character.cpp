@@ -1,5 +1,4 @@
 #include "Character.h"
-#include "Physics.h"
 
 using namespace std;
 
@@ -16,10 +15,13 @@ namespace tennis_game
 
 
 	Character::Character(bool isAIControlled)
+		:
+		drivePower(300.0)
+		
 	{
 		Character::LoadTextures();
 		raquet.SetPosition(body.getPosition());
-		raquet.SetRotation(45.0);
+		//raquet.SetRotation(45.0);
 	}
 
 
@@ -40,6 +42,7 @@ namespace tennis_game
 	sf::Sprite Character::GetRaquetSprite()
 	{
 		raquet.UpdatePosition(GetPlayerPosition());
+		raquet.PlayAnimation();
 		return raquet.GetSprite();
 	}
 
@@ -104,8 +107,55 @@ namespace tennis_game
 		body.move(0, speed * elapsed.asSeconds());
 	}
 
-	void Character::ShotGroundStroke()
+	void Character::ShotDrive()
 	{
-		raquet.PlayAnimation();
+		shotPower.x = 0;
+		shotPower.y = 350;
+		shotPower.z = 40;
+
+		raquet.SetRotation(44);
+		raquet.SetAnimationStatus();
+	}
+
+	void Character::ShotSlice()
+	{
+		shotPower.x = 0;
+		shotPower.y = 250;
+		shotPower.z = 60;
+
+		raquet.SetRotation(44);
+		raquet.SetAnimationStatus();
+	}
+
+	void Character::ShotLob()
+	{
+		shotPower.x = 0;
+		shotPower.y = 200;
+		shotPower.z = 130;
+
+		raquet.SetRotation(44);
+		raquet.SetAnimationStatus();
+	}
+
+	void Character::ShotDropshot()
+	{
+		shotPower.x = 0;
+		shotPower.y = 200;
+		shotPower.z = 80;
+
+		raquet.SetRotation(44);
+		raquet.SetAnimationStatus();
+	}
+
+	//Shots
+
+	void Character::SetShotPower(sf::Vector3f value)
+	{
+		shotPower = value;
+	}
+
+	sf::Vector3f Character::GetShotPower()
+	{
+		return shotPower;
 	}
 }
