@@ -9,8 +9,7 @@
 
 #include <SFML\Graphics.hpp>
 #include <iostream>
-#include <tmxlite\Map.hpp>
-
+#include <STP\TMXLoader.hpp>
 
 using namespace std;
 
@@ -30,14 +29,11 @@ namespace tennis_game
 		sf::RenderWindow window(sf::VideoMode(640, 768), "Sport Game");		
 		window.setFramerateLimit(60);
 
-		
-		tmx::Map court_tmx;
-		if (!court_tmx.load("Assets/TiledFiles/CourtSurface.tmx"))
-		{
-			std::cout << "ERROR!" << std::endl;
-		}
+		tmx::TileMap clayCourt("Assets/TiledFiles/CourtSurface.tmx");
 
-			
+		//clayCourt.ShowObjects();
+
+		//clayCourt.GetLayer();					
 		
 		sf::Clock clock;
 		Input gameInput;
@@ -54,6 +50,7 @@ namespace tennis_game
 		Character player2(false);
 		player2.SetStartingPosition(300, 700);
 		player2.SetStartingRotation(-90);
+
 		/*
 		Raquet player2Raquet;
 		player2Raquet.SetPosition(player2.GetPlayerPosition());
@@ -103,22 +100,10 @@ namespace tennis_game
 
 
 			//DEBUG
-			sf::Sprite courtTest;
-			/*
-			for (int i = 0; i < court_tmx.getTileCount().x; i++)
-			{
-				for (int j = 0; j < court_tmx.getTileCount().y; j++)
-				{
-										
-					window.draw(courtTest);
-				}
-			}
-
-			*/
 			//window.draw();
-			//window.draw(court.DrawTerrain());
-			//window.draw(court.DrawLines());
 			
+
+			window.draw(clayCourt);
 
 			window.draw(player1.GetSprite());
 			window.draw(player2.GetSprite());

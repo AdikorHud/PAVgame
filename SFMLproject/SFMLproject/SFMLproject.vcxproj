@@ -76,11 +76,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)libs\STP-master\include;$(SolutionDir)libs\Visual-Leak-Detector\include;$(SolutionDir)libs\libtmxlite-1.0.1-vs140-x86\include;$(SolutionDir)libs\thor-v2.0-msvc2015\include;$(SolutionDir)libs\SFML-2.4.2\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libs\STP-master\include;$(SolutionDir)libs\Visual-Leak-Detector\include;$(SolutionDir)libs\thor-v2.0-msvc2015\include;$(SolutionDir)libs\SFML-2.4.2\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)libs\thor-v2.0-msvc2015\lib;$(SolutionDir)libs\libtmxlite-1.0.1-vs140-x86\bin\DebugStatic;$(SolutionDir)libs\Visual-Leak-Detector\lib\Win32;$(SolutionDir)libs\SFML-2.4.2\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;vld.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;libtmxlite-s-d.lib;thor-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\STP-master\bin;$(SolutionDir)libs\STP-master\lib;$(SolutionDir)libs\thor-v2.0-msvc2015\lib;$(SolutionDir)libs\Visual-Leak-Detector\lib\Win32;$(SolutionDir)libs\SFML-2.4.2\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;vld.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;thor-d.lib;pugixml.lib;STP-d.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)libs\SFML-2.4.2\bin\sfml-graphics-d-2.dll $(TargetDir)
@@ -89,7 +89,9 @@ copy $(SolutionDir)libs\SFML-2.4.2\bin\sfml-system-d-2.dll $(TargetDir)
 copy $(SolutionDir)libs\SFML-2.4.2\bin\sfml-window-d-2.dll $(TargetDir)
 copy $(SolutionDir)libs\SFML-2.4.2\bin\openal32.dll $(TargetDir)
 copy $(SolutionDir)libs\Visual-Leak-Detector\bin\Win32 $(TargetDir)
-xcopy "$(SolutionDir)Assets" "$(TargetDir)Assets" /E /Y /I /D</Command>
+xcopy "$(SolutionDir)Assets" "$(TargetDir)Assets" /E /Y /I /D
+copy $(SolutionDir)libs\STP-master\bin\STP-d.dll $(TargetDir)
+copy $(SolutionDir)libs\STP-master\bin\zlibd.dll $(TargetDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
