@@ -43,6 +43,7 @@ namespace tennis_game
 		Character(bool isAIControlled);
 		~Character();
 
+
 		sf::Sprite GetSprite();
 
 		sf::Sprite GetRaquetSprite();

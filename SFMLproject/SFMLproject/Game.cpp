@@ -32,8 +32,7 @@ namespace tennis_game
 		tmx::TileMap clayCourt("Assets/TiledFiles/CourtSurface.tmx");
 
 		//clayCourt.ShowObjects();
-
-		//clayCourt.GetLayer();					
+		//clayCourt.GetLayer();
 		
 		sf::Clock clock;
 		Input gameInput;
@@ -87,7 +86,7 @@ namespace tennis_game
 			if (gamePhysics.CheckCollision(player1.GetRaquetSprite(), ball))
 			{
 				ball.ChangeBallDirection();
-				gamePhysics.SetBallVelocity(ball, player2.GetShotPower(), elapsed);
+				gamePhysics.SetBallVelocity(ball, player1.GetShotPower(), elapsed);
 			}
 
 			if (gamePhysics.CheckCollision(player2.GetRaquetSprite(), ball))

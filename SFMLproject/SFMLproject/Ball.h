@@ -9,7 +9,7 @@ namespace tennis_game
 	class Ball
 	{
 	private:
-		sf::Vector3<float> ballVelocity;
+		sf::Vector3f ballVelocity;
 		sf::Vector2f ballPosition;
 		sf::Texture ball;
 		sf::Sprite yellowBall;
@@ -18,8 +18,6 @@ namespace tennis_game
 		void LoadTextures();
 
 		void UpdatePosition(sf::Time elapsed);
-
-		sf::Vector2f SetBallPosition();
 
 		void SetScale();
 
@@ -30,9 +28,9 @@ namespace tennis_game
 
 		sf::Sprite GetSprite();
 
-		sf::Vector3<float> GetBallVelocity();
+		sf::Vector3f GetVelocity();
 
-		void UpdateVelocity(sf::Vector3<float> velocity, sf::Time elapsed);
+		void SetVelocity(sf::Vector3f velocity, sf::Time elapsed);
 
 		void SetService(Character player);
 

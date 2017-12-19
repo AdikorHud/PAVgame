@@ -9,7 +9,7 @@ namespace tennis_game
 		gravity(9.8),
 		terminalVelocity(50.0),
 		bounceFactor(0.6), //Should be defined by the Court type.
-		airResistanceFactor(0.999)
+		airResistanceFactor(0.9)
 	{
 	}
 
@@ -20,7 +20,7 @@ namespace tennis_game
 
 	void Physics::UpdateBallGravity(Ball &ball, sf::Time elapsed)
 	{
-		sf::Vector3<float> ballVelocity = ball.GetBallVelocity();
+		sf::Vector3f ballVelocity = ball.GetVelocity();
 
 		if (ballVelocity.z < terminalVelocity)
 		{
@@ -37,38 +37,34 @@ namespace tennis_game
 
 	void Physics::SetBallVelocity(Ball &ball, sf::Vector3f vector, sf::Time elapsed)
 	{
-		sf::Vector3<float> ballVelocity = ball.GetBallVelocity();
+		sf::Vector3f ballVelocity;
 
 		ballVelocity.x = vector.x,
 		ballVelocity.y = vector.y;
 		ballVelocity.z = vector.z;
-		
-		/*float hitPower = 250.0; //TEMP. Will be replaced by hitPower from player and IA input.		
-		ballVelocity.x = hitPower * 0.25; //TEMP HACK. Should be replaced by a factor derived from the raquet angle.
-		ballVelocity.y = hitPower;
-		ballVelocity.z = hitPower * 0.25; //TEMP HACK. Should be replaced by a factor derived from the shot type (Lob, Drop shot, Drive, etc).
-		*/
 
-		ball.UpdateVelocity(ballVelocity, elapsed);
+		ball.SetVelocity(ballVelocity, elapsed);
 	}
 
 	//Applies air resistance to the ball
 	void Physics::UpdateBallVelocity(Ball &ball, sf::Time elapsed)
 	{
-		sf::Vector3<float> ballVelocity = ball.GetBallVelocity();		
+		sf::Vector3f ballVelocity = ball.GetVelocity();		
 		
-		ballVelocity.x = ballVelocity.x * airResistanceFactor;
-		ballVelocity.y = ballVelocity.y * airResistanceFactor;
-		ballVelocity.z = ballVelocity.z;
+		if (ball.GetVelocity().y > 0)
+		{
+			ballVelocity.y = ballVelocity.y - airResistanceFactor;
+		}
 
+		ballVelocity.x = ballVelocity.x; //Se puede borrar
+		ballVelocity.z = ballVelocity.z; //Se puede borrar
 
 		//DEBUG
-		/*
 		std::cout << "X: " << ballVelocity.x << std::endl;
 		std::cout << "Y: " << ballVelocity.y << std::endl;
 		std::cout << "Z: " << ballVelocity.z << std::endl;
-		*/
-		ball.UpdateVelocity(ballVelocity, elapsed);
+
+		ball.SetVelocity(ballVelocity, elapsed);
 	}
 
 

@@ -28,11 +28,6 @@ namespace tennis_game
 
 	}
 
-	sf::Vector2f Ball::SetBallPosition()
-	{
-		return sf::Vector2f();
-	}
-
 	void Ball::SetScale()
 	{
 		yellowBall.setScale(1 + ballVelocity.z, 1 + ballVelocity.z);
@@ -44,7 +39,9 @@ namespace tennis_game
 		:
 		ballVelocity(0, 250, 0),
 		ballPosition(),
-		isMovingBottom(true)
+		isMovingBottom(true),
+		ball(),
+		yellowBall()
 	{
 		LoadTextures();
 	}
@@ -59,17 +56,16 @@ namespace tennis_game
 		yellowBall.setTexture(ball);
 		yellowBall.setTextureRect(sf::IntRect(50, 155, 12, 12));
 		yellowBall.setPosition(ballPosition);
-		//SetScale();
 
 		return yellowBall;
 	}
 
-	sf::Vector3<float> Ball::GetBallVelocity()
+	sf::Vector3f Ball::GetVelocity()
 	{
 		return ballVelocity;
 	}
 
-	void Ball::UpdateVelocity(sf::Vector3<float> velocity, sf::Time elapsed)
+	void Ball::SetVelocity(sf::Vector3f velocity, sf::Time elapsed)
 	{
 		ballVelocity = velocity;
 		UpdatePosition(elapsed);
@@ -77,13 +73,8 @@ namespace tennis_game
 
 	void Ball::SetService(Character player)
 	{		
-		ballPosition.x = player.GetPlayerPosition().x - 10;
-		ballPosition.y = player.GetPlayerPosition().y + 50;
-	}
-
-	bool Ball::GetBallDirection()
-	{
-		return isMovingBottom;
+		ballPosition.x = player.GetPlayerPosition().x;
+		ballPosition.y = player.GetPlayerPosition().y;
 	}
 
 	void Ball::ChangeBallDirection()
@@ -105,6 +96,12 @@ namespace tennis_game
 	}
 
 	//Returns true if the ball is moving bottom.
+	bool Ball::GetBallDirection()
+	{
+		return isMovingBottom;
+	}
+
+	//Set the ball direction (true if is moving bottom)
 	void Ball::SetDirection(bool value)
 	{
 		isMovingBottom = value;

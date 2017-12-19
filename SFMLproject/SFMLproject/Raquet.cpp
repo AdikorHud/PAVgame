@@ -70,7 +70,7 @@ void Raquet::PlayAnimation()
 {	
 	if (metalRaquet.getRotation() < 45 && isPlayingAnimation || metalRaquet.getRotation() > 315 && isPlayingAnimation)
 	{
-		metalRaquet.rotate(-2.0);
+		metalRaquet.rotate(-3.0);
 	}
 
 	else if (metalRaquet.getRotation() >= 315 || metalRaquet.getRotation() != 0.0)

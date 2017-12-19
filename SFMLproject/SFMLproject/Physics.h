@@ -1,6 +1,7 @@
 #pragma once
 #include "Ball.h"
 #include "Character.h"
+#include <Thor\Vectors.hpp>
 
 using namespace std;
 

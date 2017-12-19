@@ -9,6 +9,10 @@ namespace tennis_game
 {
 	class AI
 	{
+	private:
+		static void Movement(Character &player, Ball &ball, sf::Time elapsed);
+		static void Hit(Character &player, Ball &ball, sf::Time elapsed);
+
 	public:
 		AI();
 		~AI();
