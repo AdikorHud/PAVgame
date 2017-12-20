@@ -10,7 +10,7 @@ namespace tennis_game
 	{
 	private:
 		sf::Vector3f ballVelocity;
-		sf::Vector2f ballPosition;
+		sf::Vector3f ballPosition;
 		sf::Texture ball;
 		sf::Sprite yellowBall;
 		bool isMovingBottom;
@@ -38,7 +38,7 @@ namespace tennis_game
 
 		void ChangeBallDirection();
 
-		sf::Vector2f GetBallPosition();		
+		sf::Vector3f GetBallPosition();		
 
 		void SetDirection(bool value);
 

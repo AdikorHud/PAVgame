@@ -1,15 +1,5 @@
 #include "Game.h"
-#include "Character.h"
-#include "Input.h"
-#include "Court.h"
-#include "Ball.h"
-#include "Physics.h"
-#include "AI.h"
-#include "Raquet.h"
 
-#include <SFML\Graphics.hpp>
-#include <iostream>
-#include <STP\TMXLoader.hpp>
 
 using namespace std;
 
@@ -23,6 +13,13 @@ namespace tennis_game
 	Game::~Game()
 	{
 	}
+
+	void Game::NewGame()
+	{
+
+
+	}
+	
 
 	void Game::Execute()
 	{
@@ -42,19 +39,11 @@ namespace tennis_game
 		player1.SetStartingPosition(320, 68);
 		player1.SetStartingRotation(90);
 
-		//Raquet player1Raquet;
-		//player1Raquet.SetPosition(player1.GetPlayerPosition());
-		//player1Raquet.SetRotation(180);
 
 		Character player2(false);
 		player2.SetStartingPosition(300, 700);
 		player2.SetStartingRotation(-90);
 
-		/*
-		Raquet player2Raquet;
-		player2Raquet.SetPosition(player2.GetPlayerPosition());
-		player2Raquet.SetRotation(0);
-		*/
 
 		Ball ball;
 		ball.SetService(player1);
@@ -74,14 +63,10 @@ namespace tennis_game
 			window.clear();
 
 			sf::Time elapsed = clock.restart();
-
-			AI::ProcessAI(player1, ball, elapsed);
-			
+			AI::ProcessAI(player1, ball, elapsed);			
 			gameInput.processInput(player2, elapsed);
-			
+			gamePhysics.UpdateBallVelocity(ball, elapsed);
 
-			//player1Raquet.UpdatePosition(player1.GetPlayerPosition());
-			//player2Raquet.UpdatePosition(player2.GetPlayerPosition());
 
 			if (gamePhysics.CheckCollision(player1.GetRaquetSprite(), ball))
 			{
@@ -95,13 +80,9 @@ namespace tennis_game
 				gamePhysics.SetBallVelocity(ball, player2.GetShotPower(), elapsed);
 			}
 
-			gamePhysics.UpdateBallVelocity(ball, elapsed);
-
-
-			//DEBUG
-			//window.draw();
 			
-
+			//DEBUG //window.draw();
+			
 			window.draw(clayCourt);
 
 			window.draw(player1.GetSprite());
@@ -109,7 +90,6 @@ namespace tennis_game
 
 			window.draw(player1.GetRaquetSprite());
 			window.draw(player2.GetRaquetSprite());
-
 
 			window.draw(ball.GetSprite());
 

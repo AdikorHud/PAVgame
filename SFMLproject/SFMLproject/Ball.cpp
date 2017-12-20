@@ -38,7 +38,7 @@ namespace tennis_game
 	Ball::Ball()
 		:
 		ballVelocity(0, 250, 0),
-		ballPosition(),
+		ballPosition(0, 0, 5),
 		isMovingBottom(true),
 		ball(),
 		yellowBall()
@@ -55,7 +55,7 @@ namespace tennis_game
 	{
 		yellowBall.setTexture(ball);
 		yellowBall.setTextureRect(sf::IntRect(50, 155, 12, 12));
-		yellowBall.setPosition(ballPosition);
+		yellowBall.setPosition(ballPosition.x, ballPosition.y);
 
 		return yellowBall;
 	}
@@ -90,7 +90,7 @@ namespace tennis_game
 		}
 	}
 
-	sf::Vector2f Ball::GetBallPosition()
+	sf::Vector3f Ball::GetBallPosition()
 	{
 		return ballPosition;
 	}

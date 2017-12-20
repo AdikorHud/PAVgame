@@ -6,10 +6,10 @@ namespace tennis_game
 {
 	Physics::Physics()
 		:
-		gravity(9.8),
-		terminalVelocity(50.0),
+		gravity(0.981),
+		terminalVelocity(250.0),
 		bounceFactor(0.6), //Should be defined by the Court type.
-		airResistanceFactor(0.9)
+		airResistanceFactor(0.5)
 	{
 	}
 
@@ -18,19 +18,24 @@ namespace tennis_game
 	{
 	}
 
-	void Physics::UpdateBallGravity(Ball &ball, sf::Time elapsed)
+	sf::Vector3f Physics::UpdateBallGravity(Ball &ball, sf::Time elapsed)
 	{
 		sf::Vector3f ballVelocity = ball.GetVelocity();
 
-		if (ballVelocity.z < terminalVelocity)
+		if (ballVelocity.z >= 50)
 		{
-			ballVelocity.z = ballVelocity.z;
+			ballVelocity.z = 50;
 		}
 
-		else
+		else if (ballVelocity.z <= -50)
 		{
-			ballVelocity.z = terminalVelocity;
+			ballVelocity.z = -50;
 		}
+
+		ballVelocity.z = ballVelocity.z - (gravity);
+		
+
+		return ballVelocity;
 	}
 
 
@@ -38,7 +43,9 @@ namespace tennis_game
 	void Physics::SetBallVelocity(Ball &ball, sf::Vector3f vector, sf::Time elapsed)
 	{
 		sf::Vector3f ballVelocity;
+		sf::Vector2f test;
 
+		
 		ballVelocity.x = vector.x,
 		ballVelocity.y = vector.y;
 		ballVelocity.z = vector.z;
@@ -49,19 +56,26 @@ namespace tennis_game
 	//Applies air resistance to the ball
 	void Physics::UpdateBallVelocity(Ball &ball, sf::Time elapsed)
 	{
-		sf::Vector3f ballVelocity = ball.GetVelocity();		
-		
+		sf::Vector3f ballVelocity = ball.GetVelocity();
+	
+		//Velocity Y
 		if (ball.GetVelocity().y > 0)
 		{
 			ballVelocity.y = ballVelocity.y - airResistanceFactor;
 		}
 
-		ballVelocity.x = ballVelocity.x; //Se puede borrar
-		ballVelocity.z = ballVelocity.z; //Se puede borrar
+		else
+		{
+			std::cout << "LA BOLA SE DETUVO!" << std::endl;
+		}
+
+		//Gravity
+		ballVelocity.z = UpdateBallGravity(ball, elapsed).z;
+
 
 		//DEBUG
-		std::cout << "X: " << ballVelocity.x << std::endl;
-		std::cout << "Y: " << ballVelocity.y << std::endl;
+		//std::cout << "X: " << ballVelocity.x << std::endl;
+		//std::cout << "Y: " << ballVelocity.y << std::endl;
 		std::cout << "Z: " << ballVelocity.z << std::endl;
 
 		ball.SetVelocity(ballVelocity, elapsed);

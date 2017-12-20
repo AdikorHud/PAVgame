@@ -16,7 +16,7 @@ namespace tennis_game
 
 	Character::Character(bool isAIControlled)
 		:
-		drivePower(300.0)
+		drivePower()
 		
 	{
 		Character::LoadTextures();
