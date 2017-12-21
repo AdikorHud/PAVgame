@@ -23,6 +23,8 @@ namespace tennis_game
 		float slicePower;
 		float dropShotPower;
 
+		float shotPowerMultiplier;
+
 		sf::Vector3f shotPower;
 
 		Raquet raquet;
@@ -78,6 +80,12 @@ namespace tennis_game
 
 		//SHOTS
 		void SetShotPower(sf::Vector3f value);
+
+		void SetShotPowerMultiplier(float value);
+
+		float GetShotPowerMultiplier();
+
+		void ResetPowerMultiplier();
 
 		sf::Vector3f GetShotPower();
 

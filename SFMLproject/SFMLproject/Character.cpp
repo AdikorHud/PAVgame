@@ -16,12 +16,11 @@ namespace tennis_game
 
 	Character::Character(bool isAIControlled)
 		:
-		drivePower()
+		drivePower(),
+		shotPowerMultiplier(0.0f)
 		
 	{
 		Character::LoadTextures();
-		raquet.SetPosition(body.getPosition());
-		//raquet.SetRotation(45.0);
 	}
 
 
@@ -110,8 +109,8 @@ namespace tennis_game
 	void Character::ShotDrive()
 	{
 		shotPower.x = 0;
-		shotPower.y = 350;
-		shotPower.z = 40;
+		shotPower.y = 450 * shotPowerMultiplier;
+		shotPower.z = 25 * shotPowerMultiplier;
 
 		raquet.SetRotation(44);
 		raquet.SetAnimationStatus();
@@ -120,8 +119,8 @@ namespace tennis_game
 	void Character::ShotSlice()
 	{
 		shotPower.x = 0;
-		shotPower.y = 250;
-		shotPower.z = 60;
+		shotPower.y = 385 * shotPowerMultiplier;
+		shotPower.z = 25 * shotPowerMultiplier;
 
 		raquet.SetRotation(44);
 		raquet.SetAnimationStatus();
@@ -130,8 +129,8 @@ namespace tennis_game
 	void Character::ShotLob()
 	{
 		shotPower.x = 0;
-		shotPower.y = 200;
-		shotPower.z = 130;
+		shotPower.y = 350 * shotPowerMultiplier;
+		shotPower.z = 50 * shotPowerMultiplier;
 
 		raquet.SetRotation(44);
 		raquet.SetAnimationStatus();
@@ -140,8 +139,8 @@ namespace tennis_game
 	void Character::ShotDropshot()
 	{
 		shotPower.x = 0;
-		shotPower.y = 200;
-		shotPower.z = 80;
+		shotPower.y = 250 * shotPowerMultiplier;
+		shotPower.z = 35 * shotPowerMultiplier;
 
 		raquet.SetRotation(44);
 		raquet.SetAnimationStatus();
@@ -152,6 +151,30 @@ namespace tennis_game
 	void Character::SetShotPower(sf::Vector3f value)
 	{
 		shotPower = value;
+	}
+
+	void Character::SetShotPowerMultiplier(float value)
+	{
+		if (shotPowerMultiplier <= 1.0f)
+		{
+			shotPowerMultiplier += value;
+		}
+
+		else
+		{
+			shotPowerMultiplier = 1.0f;
+		}
+		
+	}
+
+	float Character::GetShotPowerMultiplier()
+	{
+		return shotPowerMultiplier;
+	}
+
+	void Character::ResetPowerMultiplier()
+	{
+		shotPowerMultiplier = 0.0f;
 	}
 
 	sf::Vector3f Character::GetShotPower()

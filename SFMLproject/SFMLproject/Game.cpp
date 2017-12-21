@@ -68,20 +68,20 @@ namespace tennis_game
 			gamePhysics.UpdateBallVelocity(ball, elapsed);
 
 
-			if (gamePhysics.CheckCollision(player1.GetRaquetSprite(), ball))
+			if (gamePhysics.CheckCollision(player1.GetRaquetSprite(), ball) && !ball.GetBallDirection()) //Falla cuando durante la animación de la raqueta.
 			{
 				ball.ChangeBallDirection();
 				gamePhysics.SetBallVelocity(ball, player1.GetShotPower(), elapsed);
+				player1.ResetPowerMultiplier();
 			}
 
-			if (gamePhysics.CheckCollision(player2.GetRaquetSprite(), ball))
+			if (gamePhysics.CheckCollision(player2.GetRaquetSprite(), ball)&& ball.GetBallDirection())
 			{
 				ball.ChangeBallDirection();
 				gamePhysics.SetBallVelocity(ball, player2.GetShotPower(), elapsed);
+				player2.ResetPowerMultiplier();
 			}
 
-			
-			//DEBUG //window.draw();
 			
 			window.draw(clayCourt);
 

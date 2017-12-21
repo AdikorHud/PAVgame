@@ -6,10 +6,10 @@ namespace tennis_game
 {
 	Physics::Physics()
 		:
-		gravity(0.981),
+		gravity(-0.981),
 		terminalVelocity(250.0),
 		bounceFactor(0.6), //Should be defined by the Court type.
-		airResistanceFactor(0.5)
+		airResistanceFactor(0.3f)
 	{
 	}
 
@@ -22,35 +22,16 @@ namespace tennis_game
 	{
 		sf::Vector3f ballVelocity = ball.GetVelocity();
 
-		if (ballVelocity.z >= 50)
-		{
-			ballVelocity.z = 50;
-		}
-
-		else if (ballVelocity.z <= -50)
-		{
-			ballVelocity.z = -50;
-		}
-
-		ballVelocity.z = ballVelocity.z - (gravity);
-		
+		ballVelocity.z = ballVelocity.z + gravity;
 
 		return ballVelocity;
 	}
 
 
-
 	void Physics::SetBallVelocity(Ball &ball, sf::Vector3f vector, sf::Time elapsed)
 	{
-		sf::Vector3f ballVelocity;
-		sf::Vector2f test;
-
-		
-		ballVelocity.x = vector.x,
-		ballVelocity.y = vector.y;
-		ballVelocity.z = vector.z;
-
-		ball.SetVelocity(ballVelocity, elapsed);
+		vector.x = vector.y * 0.25;
+		ball.SetVelocity(vector, elapsed);
 	}
 
 	//Applies air resistance to the ball
@@ -59,14 +40,14 @@ namespace tennis_game
 		sf::Vector3f ballVelocity = ball.GetVelocity();
 	
 		//Velocity Y
-		if (ball.GetVelocity().y > 0)
+		if (ball.GetVelocity().y > 0.0f)
 		{
 			ballVelocity.y = ballVelocity.y - airResistanceFactor;
 		}
 
 		else
 		{
-			std::cout << "LA BOLA SE DETUVO!" << std::endl;
+			//std::cout << "LA BOLA SE DETUVO!" << std::endl;
 		}
 
 		//Gravity
@@ -76,7 +57,7 @@ namespace tennis_game
 		//DEBUG
 		//std::cout << "X: " << ballVelocity.x << std::endl;
 		//std::cout << "Y: " << ballVelocity.y << std::endl;
-		std::cout << "Z: " << ballVelocity.z << std::endl;
+		//std::cout << "Z: " << ballVelocity.z << std::endl;
 
 		ball.SetVelocity(ballVelocity, elapsed);
 	}
@@ -87,9 +68,9 @@ namespace tennis_game
 	bool Physics::CheckCollision(sf::Sprite raquetSprite, Ball &ball)
 	{
 
-		sf::Sprite ballSprite = ball.GetSprite();
+		//sf::Sprite ballSprite = ball.GetSprite();
 
-		if (raquetSprite.getGlobalBounds().intersects(ballSprite.getGlobalBounds()))
+		if (raquetSprite.getGlobalBounds().intersects(ball.GetSprite().getGlobalBounds()))
 		{
 			return true;
 		}

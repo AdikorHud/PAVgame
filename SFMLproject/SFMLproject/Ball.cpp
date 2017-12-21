@@ -10,6 +10,8 @@ namespace tennis_game
 		{
 			std::cout << "ERROR! Can't load equipment texture. Class: Ball" << std::endl;
 		}
+
+		ball.setSmooth(true);
 	}
 
 	void Ball::UpdatePosition(sf::Time elapsed)
@@ -26,18 +28,38 @@ namespace tennis_game
 			ballPosition.y = ballPosition.y + (ballVelocity.y * elapsed.asSeconds()) * -1;
 		}
 
+
+		if (ballPosition.z <= 0.0f)// && ballVelocity.z != 0.0f)
+		{
+			//DEBUG
+			std::cout << "BOUNCE! " << ballVelocity.z << std::endl;
+
+			this->ballPosition.z = 0.0f;
+			this->ballVelocity.z = this->ballVelocity.z * -1;
+			this->ballVelocity.z = this->ballVelocity.z * 0.65f;
+
+			std::cout << "------! " << ballVelocity.z << std::endl;
+		}
+		
+		ballPosition.z = ballPosition.z + ballVelocity.z * elapsed.asSeconds();;
+		
+
+		SetScale();
+
+		//DEBUG
+		//std::cout << "Position: " << ballPosition.z << std::endl;
 	}
 
 	void Ball::SetScale()
 	{
-		yellowBall.setScale(1 + ballVelocity.z, 1 + ballVelocity.z);
+		yellowBall.setScale(1 + ballPosition.z / 10, 1 + ballPosition.z / 10);
 	}
 
 
 	//PUBLIC
 	Ball::Ball()
 		:
-		ballVelocity(0, 250, 0),
+		ballVelocity(0, 350, 25.0f),
 		ballPosition(0, 0, 5),
 		isMovingBottom(true),
 		ball(),

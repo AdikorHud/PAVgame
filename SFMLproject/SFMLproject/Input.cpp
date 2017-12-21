@@ -47,22 +47,26 @@ namespace tennis_game
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
+			player.SetShotPowerMultiplier(0.05);
 			player.ShotDrive();
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
+			player.SetShotPowerMultiplier(0.05);
 			player.ShotSlice();
 		}
 
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
+			player.SetShotPowerMultiplier(0.05);
 			player.ShotLob();
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
+			player.SetShotPowerMultiplier(0.05);
 			player.ShotDropshot();
 		}
 	}

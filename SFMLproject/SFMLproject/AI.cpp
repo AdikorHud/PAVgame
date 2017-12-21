@@ -20,8 +20,9 @@ namespace tennis_game
 	}
 	void AI::Hit(Character &player, Ball &ball, sf::Time elapsed)
 	{
-		if (!ball.GetBallDirection() && (ball.GetBallPosition().y - player.GetPlayerPosition().y) < 100)
+		if (!ball.GetBallDirection() && (ball.GetBallPosition().y - player.GetPlayerPosition().y) < 150)
 		{
+			player.SetShotPowerMultiplier(0.1);
 			player.ShotDrive();
 		}
 	}
