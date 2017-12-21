@@ -33,7 +33,9 @@ namespace tennis_game
 		
 		sf::Clock clock;
 		Input gameInput;
-		Court court;
+
+		sf::RectangleShape powerUI(sf::Vector2f(50.0, 5.0));
+		//Court court;
 
 		Character player1(true);
 		player1.SetStartingPosition(320, 68);
@@ -82,7 +84,7 @@ namespace tennis_game
 				player2.ResetPowerMultiplier();
 			}
 
-			
+					
 			window.draw(clayCourt);
 
 			window.draw(player1.GetSprite());
@@ -92,6 +94,15 @@ namespace tennis_game
 			window.draw(player2.GetRaquetSprite());
 
 			window.draw(ball.GetSprite());
+
+
+			//DEBUG
+			powerUI.setPosition(275, 720);
+			powerUI.setFillColor(sf::Color(255,255,0));
+			powerUI.setOutlineThickness(2.0);
+			powerUI.setOutlineColor(sf::Color());
+			powerUI.setScale(player2.GetShotPowerMultiplier(), 1);
+			window.draw(powerUI);
 
 			window.display();
 
