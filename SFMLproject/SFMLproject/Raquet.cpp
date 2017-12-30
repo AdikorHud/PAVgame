@@ -29,7 +29,7 @@ sf::Sprite Raquet::GetSprite()
 	metalRaquet.setTexture(raquet);
 	metalRaquet.setTextureRect(sf::IntRect(0, 108, 29, 8));
 	metalRaquet.setScale(1, 1);
-	
+
 	return metalRaquet;
 }
 
@@ -51,6 +51,19 @@ void Raquet::SetScale(float scale)
 void Raquet::SetRotation(float rotation)
 {
 	metalRaquet.setRotation(rotation);
+}
+
+float Raquet::GetRotation()
+{
+	if (metalRaquet.getRotation() > 180.0f)
+	{
+		return (360 - metalRaquet.getRotation()) * -1; //Changes +180 into negative values (a 315° angle becomes -45°)
+	}
+
+	else
+	{
+		return metalRaquet.getRotation();
+	}
 }
 
 void Raquet::Rotate(float value)

@@ -30,7 +30,7 @@ namespace tennis_game
 
 	void Physics::SetBallVelocity(Ball &ball, sf::Vector3f vector, sf::Time elapsed)
 	{
-		vector.x = vector.y * 0.25;
+		//vector.x = vector.y * 0.25; // DEBUG
 		ball.SetVelocity(vector, elapsed);
 	}
 

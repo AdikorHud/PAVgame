@@ -27,6 +27,8 @@ public:
 
 	void SetRotation(float rotation);
 
+	float GetRotation();
+
 	void Rotate(float value);
 
 	void SetAnimationStatus();

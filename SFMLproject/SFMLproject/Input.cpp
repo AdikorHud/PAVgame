@@ -11,7 +11,7 @@ namespace tennis_game
 	{
 	}
 
-	void Input::processInput(Character &player, sf::Time elapsed)
+	void Input::processInput(Character &player, sf::Event event, sf::Time elapsed)
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
 		{
@@ -69,5 +69,14 @@ namespace tennis_game
 			player.SetShotPowerMultiplier(0.05);
 			player.ShotDropshot();
 		}
+		/*
+		else if (event.type == sf::Event::KeyReleased)
+		{
+			if (event.KeyReleased == sf::Keyboard::Up && player.GetShotPowerMultiplier() > 0.0f)
+			{
+				player.ShotDropshot();
+			}
+		}
+		*/
 	}
 }

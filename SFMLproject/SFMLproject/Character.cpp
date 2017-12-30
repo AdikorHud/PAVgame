@@ -42,6 +42,12 @@ namespace tennis_game
 	{
 		raquet.UpdatePosition(GetPlayerPosition());
 		raquet.PlayAnimation();
+
+		//DEBUG
+		std::cout << raquet.GetRotation() << std::endl;
+		//std::cout << raquet.GetSprite().getPosition().x << std::endl;
+		//std::cout << raquet.GetSprite().getPosition().y << std::endl;
+
 		return raquet.GetSprite();
 	}
 

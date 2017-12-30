@@ -29,21 +29,31 @@ namespace tennis_game
 		}
 
 
-		if (ballPosition.z <= 0.0f)// && ballVelocity.z != 0.0f)
+		if (ballPosition.z <= 0.0f)
 		{
 			//DEBUG
-			std::cout << "BOUNCE! " << ballVelocity.z << std::endl;
+			//std::cout << "BOUNCE! " << ballVelocity.z << std::endl;
 
 			this->ballPosition.z = 0.0f;
 			this->ballVelocity.z = this->ballVelocity.z * -1;
 			this->ballVelocity.z = this->ballVelocity.z * 0.65f;
 
-			std::cout << "------! " << ballVelocity.z << std::endl;
+			//std::cout << "------! " << ballVelocity.z << std::endl;
 		}
-		
+		/*
+		else if (ballPosition.z <= 0.0f)
+		{
+			//DEBUG
+			std::cout << "NOT BOUNCE! " << ballVelocity.z << std::endl;
+
+			ballPosition.z = 0.0f;
+			ballVelocity.z = 0.0f;
+		}
+		*/
 		ballPosition.z = ballPosition.z + ballVelocity.z * elapsed.asSeconds();;
 		
-
+		//DEBUG
+		//std::cout << "Position: " << ballPosition.z << std::endl;
 		SetScale();
 
 		//DEBUG

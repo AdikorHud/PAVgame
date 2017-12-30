@@ -66,11 +66,11 @@ namespace tennis_game
 
 			sf::Time elapsed = clock.restart();
 			AI::ProcessAI(player1, ball, elapsed);			
-			gameInput.processInput(player2, elapsed);
+			gameInput.processInput(player2, event, elapsed);
 			gamePhysics.UpdateBallVelocity(ball, elapsed);
 
 
-			if (gamePhysics.CheckCollision(player1.GetRaquetSprite(), ball) && !ball.GetBallDirection()) //Falla cuando durante la animación de la raqueta.
+			if (gamePhysics.CheckCollision(player1.GetRaquetSprite(), ball) && !ball.GetBallDirection()) 
 			{
 				ball.ChangeBallDirection();
 				gamePhysics.SetBallVelocity(ball, player1.GetShotPower(), elapsed);
@@ -83,6 +83,11 @@ namespace tennis_game
 				gamePhysics.SetBallVelocity(ball, player2.GetShotPower(), elapsed);
 				player2.ResetPowerMultiplier();
 			}
+
+
+			//std::cout << player2.GetRaquetSprite().getPosition().x << std::endl;
+			//std::cout << player2.GetRaquetSprite().getPosition().y << std::endl;
+			//std::cout << player2.GetRaquetSprite().getRotation() << std::endl;
 
 					
 			window.draw(clayCourt);

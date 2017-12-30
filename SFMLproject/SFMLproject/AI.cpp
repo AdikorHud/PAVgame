@@ -5,7 +5,7 @@ namespace tennis_game
 {
 	void AI::Movement(Character &player, Ball &ball, sf::Time elapsed)
 	{
-		if (!ball.GetBallDirection() || ball.GetBallDirection())
+		if (!ball.GetBallDirection())
 		{
 			if (ball.GetBallPosition().x > player.GetRaquetSprite().getPosition().x)
 			{
@@ -17,13 +17,29 @@ namespace tennis_game
 				player.MoveLeft(elapsed);
 			}
 		}
+
+		else if (ball.GetBallDirection())
+		{
+			if (player.GetPlayerPosition().x > 320.0f)
+			{
+				player.MoveLeft(elapsed);
+			}
+
+			else if (player.GetPlayerPosition().x < 320.0f)
+			{
+				player.MoveRight(elapsed);
+			}
+		}
 	}
 	void AI::Hit(Character &player, Ball &ball, sf::Time elapsed)
 	{
 		if (!ball.GetBallDirection() && (ball.GetBallPosition().y - player.GetPlayerPosition().y) < 150)
 		{
 			player.SetShotPowerMultiplier(0.1);
-			player.ShotDrive();
+			if (ball.GetBallPosition().z < 10)
+			{
+				player.ShotDrive();
+			}			
 		}
 	}
 

@@ -11,6 +11,6 @@ namespace tennis_game
 		Input();
 		~Input();
 
-		void processInput(Character &player, sf::Time elapsed);
+		void processInput(Character &player, sf::Event event, sf::Time elapsed);
 	};
 }
